@@ -1,0 +1,140 @@
+:root {
+    --bg: #e7eaee;
+    --panel-bg: #f3f5f8;
+    --text: #323840;
+    --border: #bcc5cf;
+    --brand: #6d7987;
+    --brand-hover: #606b79;
+    --success: #748291;
+    --success-hover: #667382;
+    --danger: #7e8895;
+    --shadow: 0 14px 30px rgba(43, 49, 57, .12);
+    --focus: 0 0 0 3px rgba(95, 107, 122, .28);
+}
+
+[data-theme="dark"] {
+    --bg: #20252c;
+    --panel-bg: #2a3139;
+    --text: #e5eaf0;
+    --border: #4a5562;
+    --brand: #8995a3;
+    --brand-hover: #9aa5b2;
+    --success: #8793a1;
+    --success-hover: #99a4b1;
+    --danger: #939eaa;
+    --shadow: 0 16px 34px rgba(0, 0, 0, .42);
+    --focus: 0 0 0 3px rgba(153, 164, 177, .35);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    background: radial-gradient(circle at top, color-mix(in srgb, var(--bg) 90%, #ffffff), var(--bg));
+    margin: 0;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.card {
+    max-width: 460px;
+    margin: 64px auto;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--panel-bg) 92%, #fff), var(--panel-bg));
+    padding: 28px;
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.card-header {
+    margin-bottom: 14px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+}
+
+input, select {
+    width: 100%;
+    margin-top: 6px;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--panel-bg) 70%, #fff);
+    color: var(--text);
+}
+
+input:focus, select:focus, button:focus {
+    outline: none;
+    box-shadow: var(--focus);
+}
+
+.mode-switch {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.mode-switch button {
+    flex: 1;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-weight: 600;
+    cursor: pointer;
+    background: transparent;
+    color: var(--text);
+}
+
+.mode-switch button.active {
+    border-color: var(--brand);
+    color: #f7f8fa;
+    background: var(--brand);
+}
+
+.primary {
+    width: 100%;
+    border: 0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 18px;
+    color: #f6f8fa;
+}
+
+.create {
+    background: var(--brand);
+}
+
+.create:hover {
+    background: var(--brand-hover);
+}
+
+.login {
+    background: var(--success);
+}
+
+.login:hover {
+    background: var(--success-hover);
+}
+
+.error-message {
+    margin: 10px 0 0;
+    color: var(--danger);
+    font-weight: 600;
+}
+
+.hidden {
+    display: none;
+}
