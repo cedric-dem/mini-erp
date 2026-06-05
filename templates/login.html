@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mini ERP - Home</title>
+  <link rel="stylesheet" href="/static/css/login.css" />
+</head>
+
+<body>
+  <div class="card">
+    <div class="card-header">
+      <h1>Mini ERP</h1>
+    </div>
+    {% if error %}<p class="error-message">{{ error }}</p>{% endif %}
+
+    <div class="mode-switch">
+      <button type="button" id="loginTab" class="active">Login</button>
+      <button type="button" id="createTab">Create account</button>
+    </div>
+
+    <form id="loginForm" method="post" action="/login">
+      <label for="login_username">Username</label>
+      <input id="login_username" name="username" value="{{ username }}" required />
+      <label for="login_password">Password</label>
+      <input id="login_password" name="password" type="password" required />
+      <button class="primary login" type="submit">Login</button>
+    </form>
+
+    <form id="createForm" class="hidden" method="post" action="/create-account">
+      <label for="create_username">Username</label>
+      <input id="create_username" name="username" value="{{ username }}" required />
+      <label for="create_password">Password</label>
+      <input id="create_password" name="password" type="password" required />
+      <label for="project_action">Project action</label>
+      <select id="project_action" name="project_action" required>
+        <option value="join" selected>Join existing project</option>
+        <option value="create">Create new project</option>
+      </select>
+      <div id="projectJoinField">
+        <label for="project_id">Project to join</label>
+        <select id="project_id" name="project_id" required>
+          <option value="">Select a project</option>
+          {% for project in projects %}
+          <option value="{{ project.id }}">{{ project.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div id="projectCreateField" class="hidden">
+        <label for="project_name">New project name</label>
+        <input id="project_name" name="project_name" />
+      </div>
+      <button class="primary create" type="submit">Create account</button>
+    </form>
+  </div>
+  <script src="/static/js/login.js"></script>
+</body>
+
+</html>

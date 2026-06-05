@@ -1,0 +1,60 @@
+<h3>Inventory</h3>
+<button class='primary-btn' onclick='openInventoryModal()'>Create Object</button>
+<div id='inventoryModal' class='modal'>
+  <div class='modal-content'>
+    <h4>Create New Object Type</h4>
+    <form method='post' action='/inventory/object/create'>
+      <label>Name</label><input name='name' required />
+      <label>Initial Quantity</label><input type='number' min='0' name='initial_quantity' required />
+      <label>Unit Price</label><input type='number' min='0' step='0.01' name='unit_price' required />
+      <div class='modal-actions'>
+        <button type='button' class='secondary-btn' onclick='closeInventoryModal()'>Cancel</button>
+        <button type='submit' class='primary-btn'>Add</button>
+      </div>
+    </form>
+  </div>
+</div>
+<h4>Inventory Current State</h4>
+<div class='table-scroll'>
+  <table class='users-table'>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Current Quantity</th>
+        <th>Unit Price</th>
+        <th>Record Movement</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in inventory_items %}
+      <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.current_quantity }}</td>
+        <td>${{ '%.2f'|format(item.unit_price) }}</td>
+        <td>
+          <button type='button' class='movement-btn add'
+            onclick='openInventoryMovementModal({{ item.id }}, "add", {{ item_names_json[item.id] }})'>+</button>
+          <button type='button' class='movement-btn delete'
+            onclick='openInventoryMovementModal({{ item.id }}, "delete", {{ item_names_json[item.id] }})'>-</button>
+        </td>
+      </tr>
+      {% else %}<tr>
+        <td colspan='4'>No inventory object types added yet.</td>
+      </tr>{% endfor %}
+    </tbody>
+  </table>
+</div>
+<div id='inventoryMovementModal' class='modal'>
+  <div class='modal-content'>
+    <h4 id='movementModalTitle'>Record Movement</h4>
+    <form method='post' action='/inventory/move'>
+      <input type='hidden' id='movementItemId' name='item_id' required />
+      <input type='hidden' id='movementType' name='movement_type' required />
+      <label>Quantity of movement</label><input type='number' min='0' name='quantity' required />
+      <div class='modal-actions'>
+        <button type='button' class='secondary-btn' onclick='closeInventoryMovementModal()'>Cancel</button>
+        <button type='submit' class='primary-btn'>Record</button>
+      </div>
+    </form>
+  </div>
+</div>

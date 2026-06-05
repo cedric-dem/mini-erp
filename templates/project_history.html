@@ -1,0 +1,27 @@
+<h3>Project History</h3>
+<div class='table-scroll'>
+  <table class='users-table'>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quantity Change</th>
+        <th>Change By</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for history, item_name, created_by in history_rows %}
+      <tr>
+        <td>{{ item_name }}</td>
+        <td
+          style='color: {{ "#16a34a" if history.quantity_change > 0 else "#dc2626" if history.quantity_change < 0 else "inherit" }};'>
+          {{ history.quantity_change }}</td>
+        <td>{{ created_by }}</td>
+        <td>{{ history.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+      </tr>
+      {% else %}<tr>
+        <td colspan='4'>No inventory movements yet.</td>
+      </tr>{% endfor %}
+    </tbody>
+  </table>
+</div>

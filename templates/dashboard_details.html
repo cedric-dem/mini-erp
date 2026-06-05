@@ -1,0 +1,21 @@
+<div style='display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;'>
+  <section
+    style='border:1px solid var(--surface-border);border-radius:12px;padding:16px;background:color-mix(in srgb, var(--panel-bg) 92%, var(--table-head-bg));'>
+    <h3
+      style='margin:0 0 14px;text-align:center;font-size:1.2rem;letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid var(--surface-border);padding-bottom:10px;'>
+      Current User</h3>
+    <p><strong>Username:</strong> {{ current_user.username }}</p>
+    <p><strong>User type:</strong> {{ current_user.role }}</p>
+    <p><strong>Inventory movements:</strong> {{ user_movements_count }}</p>
+    <p><strong>Total distinct objects impacted:</strong> {{ user_distinct_impacted_objects }}</p>
+  </section>
+  <section
+    style='border:1px solid var(--surface-border);border-radius:12px;padding:16px;background:color-mix(in srgb, var(--panel-bg) 92%, var(--table-head-bg));'>
+    <h3
+      style='margin:0 0 14px;text-align:center;font-size:1.2rem;letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid var(--surface-border);padding-bottom:10px;'>
+      Project</h3>
+    <p><strong>Project name:</strong> {{ project_name }}</p>
+    <p><strong>Total different inventory objects:</strong> {{ total_inventory_objects }}</p>
+    <p><strong>Total inventory movements:</strong> {{ total_project_movements }}</p>
+  </section>
+</div>
