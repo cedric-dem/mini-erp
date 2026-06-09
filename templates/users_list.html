@@ -1,26 +1,26 @@
 <h3>Current Project Users</h3>
 <table class='users-table'>
-  <thead>
+    <thead>
     <tr>
-      <th>Username</th>
-      <th>Role</th>
-      <th>Action</th>
+        <th>Username</th>
+        <th>Role</th>
+        <th>Action</th>
     </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
     {% for project_user in project_users %}
     <tr>
-      <td>{{ project_user.username }}</td>
-      <td>{{ project_user.role }}</td>
-      <td class='action-cell'>
-        {% if current_user.role == 'admin' and project_user.role == 'unvalidated' %}
-        <form method='post' action='/dashboard/users/accept' style='margin:0;'>
-          <input type='hidden' name='target_username' value='{{ project_user.username }}' />
-          <button type='submit' class='movement-btn add accept-btn'>Accept</button>
-        </form>
-        {% else %}-{% endif %}
-      </td>
+        <td>{{ project_user.username }}</td>
+        <td>{{ project_user.role }}</td>
+        <td class='action-cell'>
+            {% if current_user.role == 'admin' and project_user.role == 'unvalidated' %}
+            <form method='post' action='/dashboard/users/accept' style='margin:0;'>
+                <input type='hidden' name='target_username' value='{{ project_user.username }}'/>
+                <button type='submit' class='movement-btn add accept-btn'>Accept</button>
+            </form>
+            {% else %}-{% endif %}
+        </td>
     </tr>
     {% endfor %}
-  </tbody>
+    </tbody>
 </table>

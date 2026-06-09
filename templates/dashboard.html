@@ -2,34 +2,34 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="/static/css/dashboard.css" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/css/dashboard.css"/>
 </head>
 
 <body>
-  <div class="layout">
+<div class="layout">
     <aside class="sidebar">
-      <a class="nav-link {% if normalized_page == 'dashboard' %}active{% endif %}"
-        href="/dashboard?page=dashboard">Dashboard</a>
-      <a class="nav-link {% if normalized_page == 'users-list' %}active{% endif %}"
-        href="/dashboard?page=users-list">Users List</a>
-      <a class="nav-link {% if normalized_page == 'inventory' %}active{% endif %}"
-        href="/dashboard?page=inventory">Inventory</a>
-      <a class="nav-link {% if normalized_page == 'project-history' %}active{% endif %}"
-        href="/dashboard?page=project-history">Project History</a>
-      <a class="nav-link {% if normalized_page == 'settings' %}active{% endif %}"
-        href="/dashboard?page=settings">Settings</a>
-      <a class="nav-link disconnect-link" href="/">Disconnect</a>
+        <a class="nav-link {% if normalized_page == 'dashboard' %}active{% endif %}"
+           href="/dashboard?page=dashboard">Dashboard</a>
+        <a class="nav-link {% if normalized_page == 'users-list' %}active{% endif %}"
+           href="/dashboard?page=users-list">Users List</a>
+        <a class="nav-link {% if normalized_page == 'inventory' %}active{% endif %}"
+           href="/dashboard?page=inventory">Inventory</a>
+        <a class="nav-link {% if normalized_page == 'project-history' %}active{% endif %}"
+           href="/dashboard?page=project-history">Project History</a>
+        <a class="nav-link {% if normalized_page == 'settings' %}active{% endif %}"
+           href="/dashboard?page=settings">Settings</a>
+        <a class="nav-link disconnect-link" href="/">Disconnect</a>
     </aside>
     <main class="content">
-      <div class="panel">
-        {% include section_template %}
-      </div>
+        <div class="panel">
+            {% include section_template %}
+        </div>
     </main>
-  </div>
-  <script src="/static/js/dashboard.js"></script>
+</div>
+<script src="/static/js/dashboard.js"></script>
 </body>
 
 </html>
